@@ -1,0 +1,275 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    background: #abd6ff;
+}
+
+
+section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100dvh;
+    background: #abd6ff;
+    width: 100vw;
+    padding-bottom: 40px; /* espaço extra para evitar corte do botão */
+}
+
+section .blur_clr {
+    position: absolute;
+    filter: blur(150px);
+}
+
+section .blur_clr:nth-child(1) {
+    background: #639bcf;
+    width: 500px;
+    height: 500px;
+    right: -50px;
+    top: -250px;
+}
+
+section .blur_clr:nth-child(2) {
+    background: #639bcf;
+    width: 300px;
+    height: 300px;
+    left: -100px;
+    bottom: -150px;
+}
+
+header {
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    font-size: 2.5em;
+    color: #2781d6;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+header .name {
+    position: relative;
+    font-size: 2.5em;
+    color: #2781d6;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+header .nav {
+    position: relative;
+    display: flex;
+}
+
+header .nav li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+header .nav li a {
+    color: #2781d6;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+header .nav li a:hover {
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .btn {
+    background: #2781d6;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 200;
+    transition: 0.5s;
+}
+
+header .btn:hover {
+    transform: scale(0.9);
+}
+
+/* Carrinho de compras */
+.carrinho-container {
+    max-width: 1200px;
+    margin: 150px auto 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 18px -8px #639bcf, -10px -10px 24px #639bcf;
+    min-height: 400px;
+}
+
+.carrinho-items {
+    border-radius: 8px;
+    padding: 20px;
+    max-height: 30vh;
+    overflow-y: auto;
+}
+
+.carrinho-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.carrinho-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.quantity-btn {
+    background: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.carrinho-total {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+.finalizar-compra {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    float: right;
+}
+
+.carrinho-vazio {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2em;
+    color: #666;
+}
+
+@media (max-width: 800px) {
+    .carrinho-container {
+        max-width: 98vw;
+        padding: 10px;
+    }
+    .carrinho-item img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.pagamento-container {
+    margin: 40px 0 0 0;
+    text-align: center;
+}
+
+.pagamento-title {
+    color: #393a3d;
+    font-size: 1.2em;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.pagamento-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.pagamento-card {
+    background: #393a3d;
+    color: #fff;
+    border-radius: 6px;
+    padding: 18px 28px 10px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 110px;
+    min-height: 60px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: transform 0.2s;
+}
+
+.pagamento-card img {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 8px;
+    object-fit: contain;
+}
+
+.pagamento-card:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.nome-cliente input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+.nome-cliente label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.nome-cliente {
+    margin-bottom: 20px;
+}

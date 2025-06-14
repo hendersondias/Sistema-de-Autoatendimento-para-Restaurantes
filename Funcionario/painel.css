@@ -1,0 +1,56 @@
+/* Estilo do painel do funcionário */
+.painel-box {
+    background: #181c23;
+    color: #fff;
+    max-width: 500px;
+    margin: 60px auto 0 auto;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    text-align: center;
+}
+.painel-box h2 {
+    margin-bottom: 20px;
+}
+.painel-box a.logout {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 30px;
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.painel-box a.logout:hover {
+    background: #c0392b;
+}
+.painel-btns {
+    margin: 30px 0 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+.painel-btn {
+    display: inline-block;
+    padding: 18px 38px;
+    background: #2d6cdf;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 10px 0 0;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.12);
+    transition: background 0.2s, transform 0.2s;
+    text-align: center;
+    min-width: 320px;
+}
+.painel-btn:hover {
+    background: #1a4a99;
+    transform: translateY(-2px) scale(1.04);
+} 
