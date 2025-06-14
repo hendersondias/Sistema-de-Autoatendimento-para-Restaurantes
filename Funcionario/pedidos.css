@@ -1,0 +1,64 @@
+body { 
+    background: #181c25; 
+    font-family: 'Montserrat', 
+    sans-serif; margin: 0; 
+}
+
+.container-pedidos { 
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; 
+    margin-top: 50px; 
+}
+
+.coluna-pedidos { 
+    background: #23283a; 
+    border-radius: 10px; 
+    padding: 20px; 
+    width: 320px; 
+    min-height: 500px; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+    max-height: 600px;
+    overflow-y: auto;
+    /* Scrollbar customizada */
+    scrollbar-width: thin;
+    scrollbar-color: #2781d6 #23283a;
+}
+
+.coluna-pedidos h2 { 
+    color: #fff; 
+    text-align: center; 
+    margin-bottom: 20px; 
+}
+
+.card-pedido { 
+    background: #fff; 
+    border-radius: 8px;
+     padding: 15px; 
+     margin-bottom: 15px; 
+     box-shadow: 0 1px 4px rgba(0,0,0,0.08); 
+     cursor: grab; 
+     transition: box-shadow 0.2s; 
+}
+
+.card-pedido.dragging { 
+    opacity: 0.5; 
+}
+
+.coluna-pedidos.over { 
+    background: #2a3147; 
+}
+
+.coluna-pedidos::-webkit-scrollbar {
+    width: 10px;
+}
+
+.coluna-pedidos::-webkit-scrollbar-thumb {
+    background: #2781d6;
+    border-radius: 8px;
+}
+
+.coluna-pedidos::-webkit-scrollbar-track {
+    background: #23283a;
+    border-radius: 8px;
+} 

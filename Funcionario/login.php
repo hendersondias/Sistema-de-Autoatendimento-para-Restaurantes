@@ -4,6 +4,8 @@ require_once '../Cliente/conexao.php';
 
 // Inicializa variáveis de mensagem
 $mensagem = '';
+$tipo_mensagem = '';
+$origem_mensagem = '';
 
 // Processa cadastro
 if (isset($_POST['acao']) && $_POST['acao'] === 'cadastro') {
@@ -17,18 +19,26 @@ if (isset($_POST['acao']) && $_POST['acao'] === 'cadastro') {
         $stmt->execute([$email]);
         if ($stmt->fetch()) {
             $mensagem = 'E-mail já cadastrado!';
+            $tipo_mensagem = 'erro';
+            $origem_mensagem = 'cadastro';
         } else {
             // Cadastra novo funcionário
             $hash = password_hash($senha, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare('INSERT INTO funcionarios (nome, email, senha) VALUES (?, ?, ?)');
             if ($stmt->execute([$nome, $email, $hash])) {
-                $mensagem = 'Cadastro realizado com sucesso! Faça login.';
+                $mensagem = 'Cadastro realizado com sucesso! Faça login para continuar.';
+                $tipo_mensagem = 'sucesso';
+                $origem_mensagem = 'cadastro';
             } else {
                 $mensagem = 'Erro ao cadastrar. Tente novamente.';
+                $tipo_mensagem = 'erro';
+                $origem_mensagem = 'cadastro';
             }
         }
     } else {
         $mensagem = 'Preencha todos os campos do cadastro!';
+        $tipo_mensagem = 'erro';
+        $origem_mensagem = 'cadastro';
     }
 }
 
@@ -43,13 +53,20 @@ if (isset($_POST['acao']) && $_POST['acao'] === 'login') {
         if ($user && password_verify($senha, $user['senha'])) {
             $_SESSION['funcionario_id'] = $user['id'];
             $_SESSION['funcionario_nome'] = $user['nome'];
+            $mensagem = 'Login realizado com sucesso! Redirecionando...';
+            $tipo_mensagem = 'sucesso';
+            $origem_mensagem = 'login';
             header('Location: painel.php');
             exit;
         } else {
-            $mensagem = 'E-mail ou senha inválidos!';
+            $mensagem = 'E-mail ou senha incorretos!';
+            $tipo_mensagem = 'erro';
+            $origem_mensagem = 'login';
         }
     } else {
         $mensagem = 'Preencha todos os campos do login!';
+        $tipo_mensagem = 'erro';
+        $origem_mensagem = 'login';
     }
 }
 ?>
@@ -61,7 +78,7 @@ if (isset($_POST['acao']) && $_POST['acao'] === 'login') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fast Service - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="Login.css?v2">
 </head>
 <body>
     <header>
@@ -72,12 +89,12 @@ if (isset($_POST['acao']) && $_POST['acao'] === 'login') {
             <a href="./login.php" class="btn">Login / Cadastre-se</a>
         </nav>
     </header>
-    <div class="container" id="container">
-        <?php if ($mensagem): ?>
-            <div style="color: #fff; background: #e74c3c; padding: 10px; margin-bottom: 10px; border-radius: 5px; text-align:center;">
-                <?php echo htmlspecialchars($mensagem); ?>
-            </div>
-        <?php endif; ?>
+    <div class="container" id="container" data-mensagem-origem="<?php echo $origem_mensagem; ?>">
+<?php if ($mensagem): ?>
+    <div class="erro-mensagem <?php echo $tipo_mensagem; ?>">
+        <?php echo htmlspecialchars($mensagem); ?>
+    </div>
+<?php endif; ?>
         <!-- Formulário de Cadastro -->
         <div class="form-container sign-up-container">
             <form action="" method="POST">

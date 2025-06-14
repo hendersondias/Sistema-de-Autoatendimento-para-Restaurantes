@@ -42,11 +42,11 @@ section .blur_clr:nth-child(2) {
 }
 
 header {
-    padding: 30px 0;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    padding: 30px 30px 30px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,6 +58,7 @@ header .logo {
     color: #2781d6;
     text-transform: uppercase;
     text-decoration: none;
+    margin-left: 100px;
 }
 
 header .name {

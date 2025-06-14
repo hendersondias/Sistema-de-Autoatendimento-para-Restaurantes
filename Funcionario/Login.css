@@ -12,6 +12,7 @@ body {
     align-items: center;
     flex-direction: column;
     height: 100vh;
+    overflow: hidden;
 }
 
 .nav-bar {
@@ -279,12 +280,28 @@ input {
 }
 
 .erro-mensagem {
-    background-color: #ffebee;
-    color: #c62828;
-    padding: 10px;
+    position: fixed;
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 15px 10px;
     border-radius: 5px;
-    margin-bottom: 1rem;
     text-align: center;
+    min-width: 300px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.erro-mensagem.sucesso {
+    background: #2ecc71;
+    color: #fff;
+}
+
+.erro-mensagem.erro {
+    background: #e74c3c;
+    color: #fff;
 }
 
 @media (max-width: 768px) {

@@ -23,7 +23,8 @@ $nome = $_SESSION['funcionario_nome'] ?? 'Funcionário';
             <a href="#" class="logo"><i class="fa-solid fa-bowl-food"></i></a>
             <h1 class="name">Fast Service</h1>
             <ul class="nav">
-                <li><a href="./Pedidos.html">Pedidos</a></li>
+                <li><a href="./painel.php">Início</a></li>
+                <li><a href="./Pedidos.php">Pedidos</a></li>
                 <li><a href="./Cardapio.html">Cardápio</a></li>
                 <li><a href="./avaliacoes.html">Avaliações</a></li>
                 <li><a href="./SobreNos.html">Sobre Nós</a></li>
@@ -35,7 +36,7 @@ $nome = $_SESSION['funcionario_nome'] ?? 'Funcionário';
         <h2>Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</h2>
         <p>Este é o painel do funcionário. Aqui você poderá acessar funcionalidades internas do sistema.</p>
         <div class="painel-btns">
-            <a href="Pedidos.html" class="painel-btn">Pedidos</a>
+            <a href="Pedidos.php" class="painel-btn">Pedidos</a>
             <a href="Cardapio.html" class="painel-btn">Cardápio</a>
             <a href="avaliacoes.html" class="painel-btn">Avaliações</a>
         </div>

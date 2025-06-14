@@ -53,4 +53,47 @@
 .painel-btn:hover {
     background: #1a4a99;
     transform: translateY(-2px) scale(1.04);
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 60px;
+    background: transparent;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .logo {
+    margin-right: 20px;
+}
+
+.nav-bar .name {
+    margin-right: 40px;
+}
+
+.nav {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.nav-bar .btn {
+    margin-left: 0;
 } 
