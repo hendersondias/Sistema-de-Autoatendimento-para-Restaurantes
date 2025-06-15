@@ -78,7 +78,7 @@ if (isset($_POST['acao']) && $_POST['acao'] === 'login') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fast Service - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="Login.css?v2">
+    <link rel="stylesheet" href="Login.css?=v2">
 </head>
 <body>
     <header>

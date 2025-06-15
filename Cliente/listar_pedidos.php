@@ -1,8 +1,8 @@
 <?php
-header('Content-Type: application/json');
-require_once '../Cliente/conexao.php';
+require_once 'conexao.php';
 
-$sql = "SELECT p.id, p.status, c.nome AS cliente_nome
+// Buscar todos os pedidos com nome do cliente
+$sql = "SELECT p.id, p.numero_pedido, p.status, c.nome AS cliente_nome
         FROM pedidos p
         JOIN clientes c ON p.cliente_id = c.id
         WHERE p.oculto = 0
@@ -10,6 +10,7 @@ $sql = "SELECT p.id, p.status, c.nome AS cliente_nome
 $stmt = $pdo->query($sql);
 $pedidos = $stmt->fetchAll();
 
+// Buscar itens de cada pedido
 $pedidos_completos = [];
 foreach ($pedidos as $pedido) {
     $sqlItens = "SELECT ip.quantidade, pr.nome AS produto_nome, ip.preco_unitario
@@ -27,10 +28,13 @@ foreach ($pedidos as $pedido) {
     }
     $pedidos_completos[] = [
         'id' => $pedido['id'],
+        'numero_pedido' => $pedido['numero_pedido'],
         'cliente' => $pedido['cliente_nome'],
         'descricao' => implode(', ', $descricao),
         'valor' => number_format($valor_total, 2, ',', '.'),
         'status' => $pedido['status']
     ];
 }
+
+header('Content-Type: application/json');
 echo json_encode(['success' => true, 'pedidos' => $pedidos_completos]); 

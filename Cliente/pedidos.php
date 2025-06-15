@@ -1,18 +1,11 @@
 <?php
-session_start();
-if (!isset($_SESSION['funcionario_id'])) {
-    header('Location: login.php');
-    exit;
-}
-$nome = $_SESSION['funcionario_nome'] ?? 'Funcionário';
-
-require_once '../Cliente/conexao.php';
+require_once 'conexao.php';
 
 // Buscar todos os pedidos com nome do cliente
-echo "<!-- debug: conectou ao banco -->";
 $sql = "SELECT p.id, p.numero_pedido, p.status, c.nome AS cliente_nome
         FROM pedidos p
         JOIN clientes c ON p.cliente_id = c.id
+        WHERE p.oculto = 0
         ORDER BY p.data DESC, p.id DESC";
 $stmt = $pdo->query($sql);
 $pedidos = $stmt->fetchAll();
@@ -46,11 +39,9 @@ foreach ($pedidos as $pedido) {
 function renderPedidos($pedidos, $status) {
     foreach ($pedidos as $pedido) {
         if ($pedido['status'] === $status) {
-            echo '<div class="card-pedido" draggable="true" data-id="' . $pedido['id'] . '">';
+            echo '<div class="card-pedido" data-id="' . $pedido['id'] . '">';
             echo '<strong>Nº Pedido:</strong> ' . htmlspecialchars($pedido['numero_pedido']) . '<br>';
-            echo '<strong>Cliente:</strong> ' . htmlspecialchars($pedido['cliente']) . '<br>';
-            echo '<strong>Pedido:</strong> ' . htmlspecialchars($pedido['descricao']) . '<br>';
-            echo '<strong>Valor:</strong> R$ ' . htmlspecialchars($pedido['valor']);
+            echo '<strong>Cliente:</strong> ' . htmlspecialchars($pedido['cliente']);
             echo '</div>';
         }
     }
@@ -60,10 +51,8 @@ function renderPedidos($pedidos, $status) {
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Pedidos - Fast Service</title>
+    <title>Status do Pedido - Fast Service</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="Login.css?=v2">
-    <link rel="stylesheet" href="painel.css?=v2">
     <link rel="stylesheet" href="pedidos.css?=v2">
 </head>
 <body>
@@ -74,28 +63,26 @@ function renderPedidos($pedidos, $status) {
                 <h1 class="name">Fast Service</h1>
             </div>
             <ul class="nav">
-                <li><a href="./painel.php">Início</a></li>
-                <li><a href="./pedidos.php">Pedidos</a></li>
-                <li><a href="./Cardapio.html">Cardápio</a></li>
-                <li><a href="./avaliacoes.html">Avaliações</a></li>
+                <li><a href="./home.html">Início</a></li>
+                <li><a href="./cardapio.php">Cardápio</a></li>
+                <li><a href="./pedidos.php">Status dos Pedidos</a></li>
+                <li><a href="./ContateNos.html">Contato</a></li>
+                <li><a href="./SobreNos.html">Sobre Nós</a></li>
+                <li><a href="./carrinho.php">Carrinho de Compras</a></li>
             </ul>
-            <div class="nav-right" style="display: flex; gap: 10px; align-items: center;">
-                <span class="btn" style="background:#222; color:#fff; cursor:default;">Olá, <?php echo htmlspecialchars($nome); ?></span>
-                <a href="logout.php" class="btn" style="background:#222; color:#fff;">Sair</a>
-            </div>
         </nav>
     </header>
-    <h1 style="color:#2781d6; text-align:center; margin-top:30px;">Painel de Pedidos</h1>
+    <h1 style="color:#2781d6; text-align:center; margin-top:180px; margin-bottom:0;">Status do Pedido</h1>
     <div class="container-pedidos">
-        <div class="coluna-pedidos" id="pendente" ondragover="allowDrop(event)" ondrop="drop(event, 'pendente')">
+        <div class="coluna-pedidos" id="pendente">
             <h2>Pendentes</h2>
             <?php renderPedidos($pedidos_completos, 'pendente'); ?>
         </div>
-        <div class="coluna-pedidos" id="em_preparo" ondragover="allowDrop(event)" ondrop="drop(event, 'em_preparo')">
+        <div class="coluna-pedidos" id="em_preparo">
             <h2>Em preparo</h2>
             <?php renderPedidos($pedidos_completos, 'em_preparo'); ?>
         </div>
-        <div class="coluna-pedidos" id="finalizado" ondragover="allowDrop(event)" ondrop="drop(event, 'finalizado')">
+        <div class="coluna-pedidos" id="finalizado">
             <h2>Finalizados</h2>
             <?php renderPedidos($pedidos_completos, 'finalizado'); ?>
         </div>

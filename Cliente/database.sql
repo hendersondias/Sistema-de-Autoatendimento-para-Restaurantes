@@ -34,8 +34,12 @@ CREATE TABLE IF NOT EXISTS pedidos (
     cliente_id INT NOT NULL,
     status ENUM('pendente', 'em_preparo', 'finalizado') DEFAULT 'pendente',
     data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    oculto BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (cliente_id) REFERENCES clientes(id)
 );
+
+-- Comando para atualizar bancos já existentes
+ALTER TABLE pedidos ADD COLUMN IF NOT EXISTS oculto BOOLEAN DEFAULT FALSE;
 
 -- Tabela de itens do pedido (compatível com processar_pedido.php)
 CREATE TABLE IF NOT EXISTS itens_pedido (

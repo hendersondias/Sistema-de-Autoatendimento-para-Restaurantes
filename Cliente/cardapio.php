@@ -30,6 +30,7 @@ $primeiraCategoria = count($produtos) > 0 ? $produtos[0]['categoria_nome'] : '';
     <ul class="nav">
       <li><a href="./home.html">Início</a></li>
       <li><a href="./Cardapio.html">Cardápio</a></li>
+      <li><a href="./pedidos.php">Status dos Pedidos</a></li>
 	  <li><a href="./ContateNos.html">Contato</a></li>
       <li><a href="./SobreNos.html">Sobre Nós</a></li>
 	  <li><a href="./carrinho.php">Carrinho de Compras</a></li>

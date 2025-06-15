@@ -1,9 +1,4 @@
 let dragged = null;
-let pedidosOcultos = JSON.parse(localStorage.getItem('pedidosOcultos') || '[]');
-
-function salvarPedidosOcultos() {
-    localStorage.setItem('pedidosOcultos', JSON.stringify(pedidosOcultos));
-}
 
 function renderPedidos(pedidos) {
     // Ordena por id crescente
@@ -19,8 +14,6 @@ function renderPedidos(pedidos) {
     });
     // Adiciona os cards
     pedidos.forEach(pedido => {
-        // Se for finalizado e está oculto, não renderiza
-        if (pedido.status === 'finalizado' && pedidosOcultos.includes(pedido.id)) return;
         const card = document.createElement('div');
         card.className = 'card-pedido';
         card.setAttribute('draggable', 'true');
@@ -41,9 +34,23 @@ function renderPedidos(pedidos) {
             btn.style.cursor = 'pointer';
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                pedidosOcultos.push(pedido.id);
-                salvarPedidosOcultos();
-                card.remove();
+                // AJAX para ocultar o pedido
+                fetch('ocultar_pedido.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'id=' + encodeURIComponent(pedido.id)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        card.remove();
+                    } else {
+                        alert('Erro ao ocultar pedido: ' + (data.message || ''));
+                    }
+                })
+                .catch(() => {
+                    alert('Erro de comunicação com o servidor.');
+                });
             });
             card.appendChild(document.createElement('br'));
             card.appendChild(btn);
