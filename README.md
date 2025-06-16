@@ -39,11 +39,11 @@ Dividido em dois painéis distintos para organização do fluxo de pedidos.
 1. Clone o repositório:
    ```bash
    git clone https://github.com/xCheese00/Sistema-de-Autoatendimento-para-Restaurantes/tree/System-v4.0
-   - Mova os arquivos para a pasta htdocs do servidor local.
-2. Importe o banco de dados:
-3. Acesse phpMyAdmin.
-4. Importe o arquivo Cliente/database.sql.
-5. Acesse no navegador:
+2. Mova os arquivos para a pasta htdocs do servidor local.
+3. Importe o banco de dados:
+4. Acesse phpMyAdmin.
+5. Importe o arquivo Cliente/database.sql.
+6. Acesse no navegador:
  http://localhost/tcc2/Cliente/
 
 ## 🤝 Contribuição
