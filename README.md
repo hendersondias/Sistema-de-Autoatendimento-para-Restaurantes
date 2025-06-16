@@ -2,10 +2,6 @@
 
 Este projeto consiste em um sistema completo de autoatendimento para restaurantes, desenvolvido com tecnologias web. Ele simula o fluxo completo de pedidos, desde o cliente até o painel do funcionário, com um banco de dados relacional integrado.
 
-## 📌 Observações
-Sistema didático voltado para simulação de um restaurante com autoatendimento.  
-Dividido em dois painéis distintos para organização do fluxo de pedidos.
-
 ## 🧾 Funcionalidades
 
 ### Área do Cliente:
@@ -55,6 +51,10 @@ Contribuições são bem-vindas! Para contribuir:
   
 ## 📄 Licença
 - Projeto acadêmico sem fins lucrativos. Uso livre para fins educacionais.
+
+## 📌 Observações
+Sistema didático voltado para simulação de um restaurante com autoatendimento.  
+Dividido em dois painéis distintos para organização do fluxo de pedidos.
 
 ## 📷 Capturas de Tela
 ### Tela Inicial
