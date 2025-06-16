@@ -57,11 +57,39 @@ Sistema didático voltado para simulação de um restaurante com autoatendimento
 Dividido em dois painéis distintos para organização do fluxo de pedidos.
 
 ## 📷 Capturas de Tela
-### Tela Inicial
+### Tela Inicial (Cliente)
 ![Tela Inicial](screenshots/tela-inicial.png)
 
-### Tela de Pedido
-![Tela de Pedido](screenshots/tela-pedido.png)
+### Tela do Cardápio(Cliente)
+![Tela do Cardápio(Cliente)](screenshots/tela-cardapio-cliente.png)
+
+### Tela do Painel de Pedidos(Cliente)
+![Tela do Painel de Pedidos(Cliente)](screenshots/painel-pedidos-cliente.png)
+
+### Tela do Painel de Contato(Cliente)
+![Tela do Painel de Pedidos(Cliente)](screenshots/feedback-cliente.png)
+
+### Tela do Sobre Nós(Cliente)
+![Tela de Sobre Nós(Cliente)](screenshots/sobre-nos.png)
+
+### Tela de Login (Funcionário)
+![Tela de Login do Funcionario](screenshots/tela-login-funcionario.png)
+
+### Tela do Painel(Funcionário)
+![Tela do Painel do Funcionário)](screenshots/tela-painel-funcionario.png)
+
+### Tela do Cardápio(Funcionário)
+![Tela do Cardápio(Funcionário)](screenshots/tela-cardapio-funcionario.png)
+
+### Tela do Painel de Pedidos(Funcionário)
+![Tela do Painel de Pedidos(Funcionário)](screenshots/painel-pedidos-funcionario.png)
+
+### Tela de Feedback's(Funcionário)
+![Tela de Feedback's(Funcionário))](screenshots/feedback-funcionario.png)
+
+
+
+
 
 
 

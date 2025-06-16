@@ -66,7 +66,7 @@ function renderPedidos($pedidos, $status) {
                 <li><a href="./home.html">Início</a></li>
                 <li><a href="./cardapio.php">Cardápio</a></li>
                 <li><a href="./pedidos.php">Status dos Pedidos</a></li>
-                <li><a href="./ContateNos.html">Contato</a></li>
+                <li><a href="./ContateNos.php">Contato</a></li>
                 <li><a href="./SobreNos.html">Sobre Nós</a></li>
                 <li><a href="./carrinho.php">Carrinho de Compras</a></li>
             </ul>
