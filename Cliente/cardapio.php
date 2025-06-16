@@ -2,7 +2,7 @@
 require_once 'conexao.php';
 
 try {
-    $stmt = $pdo->query("SELECT p.*, c.nome AS categoria_nome FROM produtos p JOIN categorias c ON p.categoria_id = c.id WHERE p.disponivel = 1 ORDER BY c.id, p.nome");
+    $stmt = $pdo->query("SELECT p.*, c.nome AS categoria_nome FROM produtos p JOIN categorias c ON p.categoria_id = c.id ORDER BY c.id, p.nome");
     $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Erro ao carregar produtos: " . $e->getMessage();
@@ -39,34 +39,8 @@ $primeiraCategoria = count($produtos) > 0 ? $produtos[0]['categoria_nome'] : '';
   </header>
 
 <body>
-	<div class="menu">
-		<?php if ($primeiraCategoria): ?>
-		<div class="heading">
-			<h1>Cardápio</h1>
-			<h3>&mdash; <?php echo htmlspecialchars($primeiraCategoria); ?> &mdash;</h3>
-		</div>
-		<?php endif; ?>
-		<?php
-		$categoriaAtual = $primeiraCategoria;
-		$primeira = true;
-		foreach ($produtos as $produto) {
-			if ($categoriaAtual != $produto['categoria_nome']) {
-				$categoriaAtual = $produto['categoria_nome'];
-				echo '<div class="heading"><h3>&mdash; ' . htmlspecialchars($categoriaAtual) . ' &mdash;</h3></div>';
-			}
-		?>
-		<div class="food-items">
-			<img src="<?php echo htmlspecialchars($produto['imagem_url']); ?>" alt="<?php echo htmlspecialchars($produto['nome']); ?>">
-			<div class="details">
-				<div class="details-sub">
-					<h5><?php echo htmlspecialchars($produto['nome']); ?></h5>
-					<h5 class="price">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></h5>
-				</div>
-				<p><?php echo htmlspecialchars($produto['descricao']); ?></p>
-				<button class="adicionar-carrinho" data-id="<?php echo $produto['id']; ?>" data-nome="<?php echo htmlspecialchars($produto['nome']); ?>" data-preco="<?php echo $produto['preco']; ?>">Comprar</button>
-			</div>
-		</div>
-		<?php } ?>
+	<div class="menu" id="menu-dinamico">
+		<!-- Produtos serão carregados via JS -->
 	</div>
 <a href="carrinho.php">
 	<button class="botao-carrinho-flutuante">
@@ -76,42 +50,80 @@ $primeiraCategoria = count($produtos) > 0 ? $produtos[0]['categoria_nome'] : '';
 </a>
 
 <script>
-    // Função para adicionar item ao carrinho
-    function adicionarAoCarrinho(id, nome, preco, imagem) {
-        const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-        
-        // Verifica se o item já existe no carrinho
-        const itemExistente = carrinho.find(item => item.id === id);
-        
-        if (itemExistente) {
-            itemExistente.quantidade += 1;
-        } else {
-            carrinho.push({
-                id: id,
-                nome: nome,
-                preco: preco,
-                imagem: imagem,
-                quantidade: 1
-            });
+function renderizarCardapio(produtos) {
+    const menu = document.getElementById('menu-dinamico');
+    menu.innerHTML = '';
+    let categoriaAtual = '';
+    produtos.forEach(produto => {
+        if (categoriaAtual !== produto.categoria_nome) {
+            categoriaAtual = produto.categoria_nome;
+            if (menu.innerHTML === '') {
+                // Primeira categoria: mostra "Cardápio" + categoria
+                menu.innerHTML += `<div class='heading'>
+                    <h1 style="font-weight:400; font-size:30px; letter-spacing:10px; margin-bottom:10px;">Cardápio</h1>
+                    <h3 style="font-weight:600; font-size:22px; letter-spacing:5px;">&mdash; ${categoriaAtual} &mdash;</h3>
+                </div>`;
+            } else {
+                // Outras categorias: só mostra a categoria
+                menu.innerHTML += `<div class='heading'>
+                    <h3 style="font-weight:600; font-size:22px; letter-spacing:5px;">&mdash; ${categoriaAtual} &mdash;</h3>
+                </div>`;
+            }
         }
-        
-        localStorage.setItem('carrinho', JSON.stringify(carrinho));
-        alert('Item adicionado ao carrinho!');
-    }
-
+        menu.innerHTML += `
+        <div class='food-items'>
+            <img src='${produto.imagem_url.replace('./img','img')}' alt='${produto.nome}'>
+            <div class='details'>
+                <div class='details-sub'>
+                    <h5>${produto.nome}</h5>
+                    <h5 class='price'>R$ ${parseFloat(produto.preco).toFixed(2).replace('.', ',')}</h5>
+                </div>
+                <p>${produto.descricao}</p>
+                ${produto.disponivel == 1 ?
+                    `<button class='adicionar-carrinho' data-id='${produto.id}' data-nome='${produto.nome}' data-preco='${produto.preco}'>Comprar</button>` :
+                    `<button class='btn-esgotado' disabled style='background:#e74c3c; color:#fff; cursor:not-allowed;'>Esgotado</button>`
+                }
+            </div>
+        </div>`;
+    });
     // Adiciona eventos de clique aos botões de compra
-    document.addEventListener('DOMContentLoaded', () => {
-        const botoes = document.querySelectorAll('.adicionar-carrinho');
-        botoes.forEach(botao => {
-            botao.addEventListener('click', () => {
-                const id = botao.dataset.id;
-                const nome = botao.dataset.nome;
-                const preco = parseFloat(botao.dataset.preco);
-                const imagem = botao.closest('.food-items').querySelector('img').src;
-                adicionarAoCarrinho(id, nome, preco, imagem);
-            });
+    document.querySelectorAll('.adicionar-carrinho').forEach(botao => {
+        botao.addEventListener('click', () => {
+            if (botao.disabled) return;
+            const id = botao.dataset.id;
+            const nome = botao.dataset.nome;
+            const preco = parseFloat(botao.dataset.preco);
+            const imagem = botao.closest('.food-items').querySelector('img').src;
+            adicionarAoCarrinho(id, nome, preco, imagem);
         });
     });
+}
+
+function carregarCardapio() {
+    fetch('listar_produtos.php')
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                renderizarCardapio(data.produtos);
+            }
+        });
+}
+
+function adicionarAoCarrinho(id, nome, preco, imagem) {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const itemExistente = carrinho.find(item => item.id === id);
+    if (itemExistente) {
+        itemExistente.quantidade += 1;
+    } else {
+        carrinho.push({ id, nome, preco, imagem, quantidade: 1 });
+    }
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    alert('Item adicionado ao carrinho!');
+}
+
+// Atualiza o cardápio a cada 2 segundos
+setInterval(carregarCardapio, 2000);
+carregarCardapio();
 </script>
 
 </body>

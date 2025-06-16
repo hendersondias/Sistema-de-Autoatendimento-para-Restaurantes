@@ -23,9 +23,9 @@ header{
     justify-content: space-between;
     align-items: center;
     background: rgba(0,0,0,0.1);
-  }
-  
-  header .logo{
+}
+
+header .logo{
     font-size: 2.5em;
     color: #2781d6;
     text-transform: uppercase;
@@ -48,35 +48,35 @@ header{
   header .nav li{
     list-style: none;
     margin: 0 10px;
-  }
-  
-  header .nav li a{
+}
+
+header .nav li a{
     color: #2781d6;
     text-decoration: none;
     padding: 5px 20px;
     border-radius: 25px;
     font-weight: 500;
     transition: 0.5s;
-  }
-  
-  header .nav li a:hover{
-      background: #fff ;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-  }
-  
-  header .btn{
-      background: #2781d6;
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: 500;
-      transition: 0.5s;
-  }
-  
-  header .btn:hover{
-      transform: scale(0.9);
-  }
+}
+
+header .nav li a:hover{
+    background: #fff ;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+header .btn{
+    background: #2781d6;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+header .btn:hover{
+    transform: scale(0.9);
+}
 
 .menu{
     padding: 0 10px 30px 10px;

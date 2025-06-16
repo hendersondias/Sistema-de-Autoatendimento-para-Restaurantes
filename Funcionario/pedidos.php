@@ -76,8 +76,8 @@ function renderPedidos($pedidos, $status) {
             <ul class="nav">
                 <li><a href="./painel.php">Início</a></li>
                 <li><a href="./pedidos.php">Pedidos</a></li>
-                <li><a href="./Cardapio.html">Cardápio</a></li>
-                <li><a href="./avaliacoes.html">Avaliações</a></li>
+                <li><a href="./Cardapio.php">Cardápio</a></li>
+                <li><a href="./avaliacoes.php">Feedbacks</a></li>
             </ul>
             <div class="nav-right" style="display: flex; gap: 10px; align-items: center;">
                 <span class="btn" style="background:#222; color:#fff; cursor:default;">Olá, <?php echo htmlspecialchars($nome); ?></span>

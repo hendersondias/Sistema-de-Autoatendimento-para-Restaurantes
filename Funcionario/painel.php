@@ -24,9 +24,9 @@ $nome = $_SESSION['funcionario_nome'] ?? 'Funcionário';
             <h1 class="name">Fast Service</h1>
             <ul class="nav">
                 <li><a href="./painel.php">Início</a></li>
-                <li><a href="./Pedidos.php">Painel de Pedidos</a></li>
-                <li><a href="./Cardapio.html">Cardápio</a></li>
-                <li><a href="./avaliacoes.html">Avaliações</a></li>
+                <li><a href="./Pedidos.php">Pedidos</a></li>
+                <li><a href="./Cardapio.php">Cardápio</a></li>
+                <li><a href="./avaliacoes.php">Feedbacks</a></li>
             </ul>
             <span class="btn" style="background:#222; color:#fff; cursor:default;">Olá, <?php echo htmlspecialchars($nome); ?></span>
         </nav>
@@ -35,9 +35,9 @@ $nome = $_SESSION['funcionario_nome'] ?? 'Funcionário';
         <h2>Bem-vindo, <?php echo htmlspecialchars($nome); ?>!</h2>
         <p>Este é o painel do funcionário. Aqui você poderá acessar funcionalidades internas do sistema.</p>
         <div class="painel-btns">
-            <a href="Pedidos.php" class="painel-btn">Painel de Pedidos</a>
-            <a href="Cardapio.html" class="painel-btn">Cardápio</a>
-            <a href="avaliacoes.html" class="painel-btn">Avaliações</a>
+            <a href="Pedidos.php" class="painel-btn">Pedidos</a>
+            <a href="Cardapio.php" class="painel-btn">Cardápio</a>
+            <a href="avaliacoes.php" class="painel-btn">Feedbacks</a>
         </div>
         <a href="logout.php" class="logout">Sair</a>
     </div>

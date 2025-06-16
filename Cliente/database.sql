@@ -62,6 +62,17 @@ CREATE TABLE IF NOT EXISTS funcionarios (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+
+-- Tabela de contatos
+CREATE TABLE IF NOT EXISTS contatos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    assunto VARCHAR(200) NOT NULL,
+    mensagem TEXT NOT NULL,
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Inserir categorias
 INSERT INTO categorias (nome) VALUES 
 ('Donuts'),
