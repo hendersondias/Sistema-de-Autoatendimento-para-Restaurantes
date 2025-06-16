@@ -8,19 +8,20 @@ Este projeto consiste em um sistema completo de autoatendimento para restaurante
 - Acesso ao **cardápio dinâmico**.
 - Adição de itens ao **carrinho**.
 - **Finalização do pedido** com envio para o painel da cozinha.
-- Tela de **avaliação de atendimento**.
+- Tela de **Feedback's para o Restaurante**.
 - Páginas institucionais: Sobre nós, Contato, etc.
 
 ### Área do Funcionário:
-- Painel de controle para **visualização e atualização do status dos pedidos**.
+- Tela de Cadastro e Login para os funcionários.
+- Painel de controle para **visualização e atualização do status dos pedidos** com sistema de **drag and drop** dos cards.
 - Cadastro e edição de produtos do cardápio.
 - Marcar itens como **esgotados**.
-- Visualização das **avaliações recebidas** dos clientes.
+- Visualização dos **Feedback's recebidos** dos clientes.
 
 ## 💻 Tecnologias Utilizadas
 
 - **HTML5** e **CSS3**: Interface responsiva.
-- **JavaScript (Vanilla)**: Interações dinâmicas (ex: carrinho, atualizações em tempo real).
+- **JavaScript**: Interações dinâmicas (ex: carrinho, atualizações em tempo real).
 - **PHP**: Lógica de back-end e integração com banco de dados.
 - **MySQL**: Estrutura de banco de dados relacional.
 - **AJAX**: Comunicação assíncrona entre cliente e servidor (sem recarregar a página).
