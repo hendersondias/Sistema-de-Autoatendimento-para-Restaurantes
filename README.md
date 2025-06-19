@@ -40,8 +40,7 @@ Este projeto consiste em um sistema completo de autoatendimento para restaurante
 3. Acesse phpMyAdmin.
 4. Importe o arquivo Cliente/database.sql.
 5. Acesse no navegador:
- http://localhost/tcc2/Cliente/
- http://localhost/tcc2/Funcionario/
+ http://localhost/Sistema-de-Autoatendimento-para-Restaurantes-System-v4.1/Cliente/ e http://localhost/Sistema-de-Autoatendimento-para-Restaurantes-System-v4.1/Funcionario/
 
 ## 🤝 Contribuição
 Contribuições são bem-vindas! Para contribuir:
