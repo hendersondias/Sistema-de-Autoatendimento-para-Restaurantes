@@ -1,6 +1,6 @@
 # 🍽️ Sistema de Autoatendimento para Restaurantes
 
-Este projeto consiste em um sistema completo de autoatendimento para restaurantes, desenvolvido com tecnologias web. Ele simula o fluxo completo de pedidos, desde o cliente até o painel do funcionário, com um banco de dados relacional integrado.
+Este projeto de TCC consiste em um sistema completo de autoatendimento para restaurantes, desenvolvido com tecnologias web. Ele simula o fluxo completo de pedidos, desde o cliente até o painel do funcionário, com um banco de dados relacional integrado.
 
 ## 🧾 Funcionalidades
 
@@ -35,7 +35,7 @@ Este projeto consiste em um sistema completo de autoatendimento para restaurante
 ### 🚀 Passos para rodar o projeto
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/xCheese00/Sistema-de-Autoatendimento-para-Restaurantes/tree/System-v4.1
+   git clone https://github.com/hendersondias/Sistema-de-Autoatendimento-para-Restaurantes/tree/System-v4.1
 2. Mova os arquivos para a pasta htdocs do servidor local.
 3. Acesse phpMyAdmin.
 4. Importe o arquivo Cliente/database.sql.
