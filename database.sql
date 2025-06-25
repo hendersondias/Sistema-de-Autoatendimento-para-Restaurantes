@@ -82,11 +82,10 @@ INSERT INTO categorias (nome) VALUES
 -- Inserir produtos - Donuts
 INSERT INTO produtos (nome, descricao, preco, categoria_id, imagem_url, tempo_preparo) VALUES
 ('Dream Happy Donut', 'Uma explosão celestial de sabor açucarado que vai te transportar para um mundo de doçura inigualável.', 16.00, 1, './img/donuts2.jpg', 10),
-
 ('Lemon Chocolate Donut', 'O donut de limão com chocolate é a combinação ideal entre o cítrico do limão e a indulgência do chocolate.', 15.00, 1, './img/Donuts-Limao-com-Chocolate.jpg', 10),
 ('Camembert Donut', 'Delicie-se com nosso donut de queijo Camembert, onde a cremosidade do queijo encontra a suavidade do donut.', 18.00, 1, './img/donuts.com_croaca_queijo.png', 12),
 ('Maple Bacon Donut', 'A combinação perfeita entre a crocância do bacon e a maciez do donut, mergulhada em um creme irresistível.', 14.00, 1, './img/Maple-Bacon-Donuts_WEB.jpg', 12),
-('Chicken Donut', 'Apresentamos o donut de frango com doce de leite, onde a suculência do frango se encontra com a doçura irresistível do doce de leite.', 13.00, 1, './img/donuts_de_frango.jpg', 15)
+('Chicken Donut', 'Apresentamos o donut de frango com doce de leite, onde a suculência do frango se encontra com a doçura irresistível do doce de leite.', 13.00, 1, './img/donuts_de_frango.jpg', 15),
 ('Strawberry Frosted Donut', 'Experimente a perfeição vermelha! Nosso donut de morango é uma celebração da fruta mais irresistível.', 15.00, 1, './img/Strawberry-Frosted-Donuts.jpg', 10);
 
 -- Inserir produtos - Doces
