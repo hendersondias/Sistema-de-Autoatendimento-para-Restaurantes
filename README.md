@@ -52,6 +52,8 @@ Contribuições são bem-vindas! Para contribuir:
 - Commit suas alterações (git commit -m 'Adicionando nova funcionalidade').
 - Envie um pull request.
   
+Atualmente este projeto teve colaboração de Maysa27 (https://github.com/maysa27)
+
 ## 📄 Licença
 - Projeto acadêmico sem fins lucrativos. Uso livre para fins educacionais.
 
